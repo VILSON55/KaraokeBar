@@ -1,14 +1,25 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
+// Rotas GET da página Home
 router.get("/", function (req, res, next) {
-  res.render("pages/index", { title: "KaraokeBar" });
+  res.render("pages/index", {
+    title: "KaraokeBar",
+  });
 });
 
-/* GET users listing. */
+// Rotas GET da página Cardápio
 router.get("/menu", function (req, res, next) {
-  res.render("pages/menu", { title: "Cardápio KaraokeBar" });
+  res.render("pages/menu", {
+    title: "Cardápio KaraokeBar",
+  });
+});
+
+// Rotas GET da página Pedido Online
+router.get("/order", function (req, res, next) {
+  res.render("pages/menu", {
+    title: "Pedido Online KaraokeBar",
+  });
 });
 
 module.exports = router;
