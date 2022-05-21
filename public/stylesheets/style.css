@@ -1,13 +1,13 @@
-@import url('animations.css');
+@import url("animations.css");
 
 :root {
-  --roxo : #59114D;
-  --verde-claro: #003B36;
+  --roxo: #59114d;
+  --verde-claro: #003b36;
   --verse-escuro: #012622;
-  --bg-primary: #ECE5F0;
+  --bg-primary: #ece5f0;
   --bg-secondary: #19274e;
-  --txt-primary: #E98A15;
-  --bg-light: #ECE5F0;
+  --txt-primary: #e98a15;
+  --bg-light: #ece5f0;
 }
 
 *.grid-container {
@@ -25,7 +25,7 @@ body {
   display: grid;
   grid-template-areas: "header" "main" "footer";
   grid-template-rows: 10vh minmax(70vh, 1fr) 20vh;
-  background-color: var(--bg-light);
+  background-color: var(--bg-primary);
 }
 
 header {
@@ -43,61 +43,50 @@ header > .navbar {
   align-items: center;
 }
 
-header > .navbar a{
+header > .navbar a {
   text-decoration: none;
   color: var(--bg-primary);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   font-size: 1.5rem;
 }
 
 main {
   display: grid;
   grid-area: main;
-  background-color: var(--bg-primary);
 }
 
 footer {
   display: grid;
   grid-area: footer;
-  background-color: var(--bg-primary);
 }
 
 footer > div.grid-container {
-  grid-template-areas: "links social";
-  grid-template-columns: repeat(2, minmax(1fr, 50vw));
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
 }
 
 footer > .grid-container > .links {
-  grid-area: links;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
 }
 
-footer .links > *,
-footer .social > * {
+footer .links > * {
   color: var(--txt-primary);
   text-decoration: none;
   font-size: 1.5rem;
 }
 
-footer > .grid-container > .social {
-  grid-area: social;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
 @media (max-width: 500px) {
   footer > .grid-container > .links {
-    grid-area: links;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr;
-    justify-items: start;
-    margin: 0 auto;
+    min-height: 100%;
+    min-width: 100%;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    /* margin: 0 auto; */
     row-gap: 10px;
   }
 }
