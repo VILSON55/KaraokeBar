@@ -39,15 +39,39 @@ header {
 header > .navbar {
   background-color: var(--txt-primary);
   grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
   align-items: center;
 }
 
-header > .navbar a {
+header > .navbar .link-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
   text-decoration: none;
   color: var(--bg-primary);
-  transition: all 0.5s ease-in-out;
   font-size: 2rem;
+}
+
+header > .navbar .link-nav a {
+  color: var(--bg-primary);
+  transition: color 0.2s ease-in-out;
+}
+
+header > .navbar .link-nav::before {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  content: "";
+  width: 0%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--roxo);
+}
+
+header > .navbar .link-nav.selected::before {
+  width: 100%;
 }
 
 main {
@@ -76,6 +100,15 @@ footer .links > * {
   color: black;
   text-decoration: none;
   font-size: 2rem;
+}
+
+/* Estilos mais detalhados */
+
+.title {
+  font-size: 1.5rem;
+  color: var(--txt-primary);
+  text-align: center;
+  margin: 10px 0;
 }
 
 @media (max-width: 500px) {
