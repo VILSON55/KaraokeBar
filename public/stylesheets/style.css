@@ -47,7 +47,7 @@ header > .navbar a {
   text-decoration: none;
   color: var(--bg-primary);
   transition: all 0.5s ease-in-out;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 main {
@@ -68,25 +68,15 @@ footer > div.grid-container {
 
 footer > .grid-container > .links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
 }
 
 footer .links > * {
-  color: var(--txt-primary);
+  color: black;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 @media (max-width: 500px) {
-  footer > .grid-container > .links {
-    min-height: 100%;
-    min-width: 100%;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    /* margin: 0 auto; */
-    row-gap: 10px;
-  }
 }
