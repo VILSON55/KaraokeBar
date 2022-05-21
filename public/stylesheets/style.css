@@ -1,9 +1,13 @@
+@import url('animations.css');
+
 :root {
-  --bg-primary: #0f132e;
+  --roxo : #59114D;
+  --verde-claro: #003B36;
+  --verse-escuro: #012622;
+  --bg-primary: #ECE5F0;
   --bg-secondary: #19274e;
-  --txt-primary: #536d88;
-  --txt-secondary: #b49b85;
-  --bg-light: #eac195;
+  --txt-primary: #E98A15;
+  --bg-light: #ECE5F0;
 }
 
 *.grid-container {
@@ -20,7 +24,6 @@ body {
   scroll-behavior: smooth;
   display: grid;
   grid-template-areas: "header" "main" "footer";
-  row-gap: 1px;
   grid-template-rows: 10vh minmax(70vh, 1fr) 20vh;
   background-color: var(--bg-light);
 }
@@ -28,9 +31,23 @@ body {
 header {
   display: grid;
   grid-area: header;
-  grid-template-areas: "logo nav";
-  grid-template-columns: 10vh 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10vh;
   background-color: var(--bg-primary);
+}
+
+header > .navbar {
+  background-color: var(--txt-primary);
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+header > .navbar a{
+  text-decoration: none;
+  color: var(--bg-primary);
+  transition: all .5s ease-in-out;
+  font-size: 1.5rem;
 }
 
 main {
@@ -42,7 +59,7 @@ main {
 footer {
   display: grid;
   grid-area: footer;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
 }
 
 footer > div.grid-container {
@@ -61,7 +78,7 @@ footer > .grid-container > .links {
 
 footer .links > *,
 footer .social > * {
-  color: var(--txt-secondary);
+  color: var(--txt-primary);
   text-decoration: none;
   font-size: 1.5rem;
 }

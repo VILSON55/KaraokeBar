@@ -1,0 +1,7 @@
+header > .navbar a:hover{
+    color: var(--bg-secondary);
+}
+
+header > .navbar a:hover::before{
+    filter: blur(5px);
+}
