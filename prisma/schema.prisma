@@ -17,6 +17,8 @@ model User {
   password  String   @db.VarChar(255)
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @updatedAt
+
+  @@map("users")
 }
 
 model Music {
@@ -26,6 +28,8 @@ model Music {
   source    String   @db.VarChar(255)
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @updatedAt
+
+  @@map("musics")
 }
 
 model Item {
@@ -34,6 +38,8 @@ model Item {
   price       Float    @db.Float
   createdAt   DateTime @default(now()) @db.Timestamp(6)
   updatedAt   DateTime @updatedAt
+
+  @@map("items")
 }
 
 model Order {
@@ -42,4 +48,6 @@ model Order {
   totalPrice Float    @db.Float
   createdAt  DateTime @default(now()) @db.Timestamp(6)
   updatedAt  DateTime @updatedAt
+
+  @@map("orders")
 }
