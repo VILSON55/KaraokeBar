@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?  @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt
+}
+
+model Music {
+  id        String   @id @default(uuid())
+  title     String   @db.VarChar(255)
+  artist    String   @db.VarChar(255)
+  source    String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt
+}
+
+model Item {
+  id          String   @id @default(uuid())
+  description String   @db.VarChar(255)
+  price       Float    @db.Float
+  createdAt   DateTime @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id         String   @id @default(uuid())
+  items      String   @db.VarChar(255)
+  totalPrice Float    @db.Float
+  createdAt  DateTime @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime @updatedAt
+}
