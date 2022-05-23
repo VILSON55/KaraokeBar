@@ -12,9 +12,10 @@ datasource db {
 
 model User {
   id        String   @id @default(uuid())
-  name      String?  @db.VarChar(255)
+  name      String   @db.VarChar(255)
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
+  role      UserRole @default(USER)
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @updatedAt
 
@@ -50,4 +51,9 @@ model Order {
   updatedAt  DateTime @updatedAt
 
   @@map("orders")
+}
+
+enum UserRole {
+  USER
+  ADMIN
 }
