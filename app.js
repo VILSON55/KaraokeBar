@@ -1,5 +1,6 @@
 const createError = require("http-errors");
 const express = require("express");
+const session = require('express-session');
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
@@ -13,6 +14,15 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(expressLayouts);
+
+app.use(session({
+  secret: 'karaokebar',
+  cookie: {
+      maxAge: 1200000,
+  },
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(logger("dev"));
 app.use(express.json());
