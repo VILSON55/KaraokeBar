@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
+const userController = require('../controllers/UserController');
+const { isAuthenticated, isAdmin } = require('../middlewares/Auth');
+
 // Rotas GET da página Home
 router.get("/", function (req, res, next) {
   res.render("pages/home", {
@@ -30,5 +33,15 @@ router.get("/order", function (req, res, next) {
     },
   });
 });
+
+// Rotas de Usuário
+router
+  .get("/users", isAdmin, userController.findAll)
+  .post("/admin/create", userController.generateAdmin)
+  .post("/user/create", isAdmin, userController.create)
+  .post("/login", userController.login)
+  .put("/user/update", isAuthenticated, userController.update)
+  .delete("/user/delete/:id", isAdmin, userController.delete)
+
 
 module.exports = router;
