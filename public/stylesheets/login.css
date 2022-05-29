@@ -1,0 +1,58 @@
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: orange;
+}
+
+.modal {
+  min-width: 400px;
+  max-width: 50vw;
+  min-height: 400px;
+  max-height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0;
+  border-radius: 15px;
+  border: solid 1px transparent;
+  background-color: #fff;
+}
+
+.loginlabel,
+.logininput {
+  font-size: 1.5rem;
+  outline: none;
+  margin: 5px 5px;
+}
+
+.logininput {
+  border-radius: 5px;
+  outline: lightblue 1px solid;
+  border: solid 1px transparent;
+}
+
+.logininput:hover {
+  outline: black 1px solid;
+}
+
+.loginbutton {
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: var(--txt-primary);
+  color: #fff;
+  border: solid 1px transparent;
+  margin: 50px 0;
+  width: 50%;
+  align-self: center;
+  height: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    min-width: 150px;
+    max-width: 50vw;
+    min-height: 30vh;
+  }
+}

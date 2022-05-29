@@ -1,4 +1,6 @@
 @import url("animations.css");
+@import url("login.css");
+@import url("userDashboard.css");
 
 :root {
   --roxo: #59114d;
@@ -59,21 +61,6 @@ header > .navbar .link-nav a {
   transition: color 0.2s ease-in-out;
 }
 
-header > .navbar .link-nav::before {
-  position: absolute;
-  transition: all 0.2s ease-in-out;
-  content: "";
-  width: 0%;
-  height: 4px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--roxo);
-}
-
-header > .navbar .link-nav.selected::before {
-  width: 100%;
-}
-
 main {
   display: grid;
   grid-area: main;
@@ -109,6 +96,13 @@ footer .links > * {
   color: var(--txt-primary);
   text-align: center;
   margin: 10px 0;
+}
+
+hr {
+  border-color: #aaa;
+  height: 1px;
+  border-width: 0;
+  border-top-width: 1px;
 }
 
 @media (max-width: 500px) {

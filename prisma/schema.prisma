@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,49 +8,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String   @db.VarChar(255)
-  email     String   @unique @db.VarChar(255)
-  password  String   @db.VarChar(255)
-  role      UserRole @default(USER)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(uuid()) @db.VarChar(20)
+  name      String?   @db.VarChar(255)
+  email     String?   @unique(map: "email") @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime? @db.DateTime(0)
+  updatedAt DateTime? @updatedAt @db.DateTime(0)
+  role      String?   @db.VarChar(255)
 
   @@map("users")
-}
-
-model Music {
-  id        String   @id @default(uuid())
-  title     String   @db.VarChar(255)
-  artist    String   @db.VarChar(255)
-  source    String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
-  updatedAt DateTime @updatedAt
-
-  @@map("musics")
-}
-
-model Item {
-  id          String   @id @default(uuid())
-  description String   @db.VarChar(255)
-  price       Float    @db.Float
-  createdAt   DateTime @default(now()) @db.Timestamp(6)
-  updatedAt   DateTime @updatedAt
-
-  @@map("items")
-}
-
-model Order {
-  id         String   @id @default(uuid())
-  items      String   @db.VarChar(255)
-  totalPrice Float    @db.Float
-  createdAt  DateTime @default(now()) @db.Timestamp(6)
-  updatedAt  DateTime @updatedAt
-
-  @@map("orders")
-}
-
-enum UserRole {
-  USER
-  ADMIN
 }

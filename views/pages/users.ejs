@@ -1,0 +1,37 @@
+<%- contentFor('body') %>
+<div class="grid-container content">
+  <div class="user-container">
+      <div class="user-header">
+        <p class="header-title">Funcionários</p>
+      </div>
+      <div class="user-list">
+        <div class="field-names">
+          <span class="field-label">ID</span>
+          <span class="field-label">Nome</span>
+          <span class="field-label">E-mail</span>
+          <span class="field-label">Nível de Usuário</span>
+          <span class="field-actions"></span>
+          <hr>
+        </div>
+        
+        <div class="field-values">
+          <% for(var i=0; i<user.length; i++) {%>
+            <div class="user-data-container">
+              <div class="user-data">
+                <span class="user-value"><%= user[i].id%></span>
+                <span class="user-value"><%= user[i].name%></span>
+                <span class="user-value"><%= user[i].email%></span>
+                <span class="user-value"><%= user[i].role%></span>
+              </div>
+              <div class="actions">
+                <button class="user-edit">Editar</button>
+                <button class="user-delete">Inativar</button>
+              </div>
+            </div>
+            <hr>
+         <% } %>
+        </div>
+      </div>
+  </div>
+</div>
+<script></script>
