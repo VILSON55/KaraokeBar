@@ -31,20 +31,20 @@ body {
 }
 
 header {
-  display: grid;
+  display: grid !important;
   grid-area: header;
   grid-template-columns: 1fr;
   grid-template-rows: 10vh;
   background-color: var(--bg-primary);
 }
 
-header > .navbar {
+header > .navbar-kb {
   background-color: var(--txt-primary);
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
 
-header > .navbar .link-nav {
+header > .navbar-kb .link-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,18 +56,22 @@ header > .navbar .link-nav {
   font-size: 2rem;
 }
 
-header > .navbar .link-nav a {
+header > .navbar-kb .link-nav a {
   color: var(--bg-primary);
   transition: color 0.2s ease-in-out;
 }
 
+header > .navbar-kb .link-nav a:hover {
+  color: var(--bg-secondary);
+}
+
 main {
-  display: grid;
+  display: grid !important;
   grid-area: main;
 }
 
 footer {
-  display: grid;
+  display: grid !important;
   grid-area: footer;
 }
 
@@ -84,9 +88,14 @@ footer > .grid-container > .links {
 }
 
 footer .links > * {
-  color: black;
+  color: #000;
   text-decoration: none;
   font-size: 2rem;
+}
+
+footer .links > .github:hover {
+  color: #000;
+  filter: drop-shadow(0 0 1rem #000);
 }
 
 /* Estilos mais detalhados */

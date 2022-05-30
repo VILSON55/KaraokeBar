@@ -1,13 +1,7 @@
 .content {
   justify-content: center;
-  grid-template-rows: 1fr;
+  grid-template-rows: max-content 1fr;
   grid-template-columns: 1fr;
-}
-.user-container {
-  display: grid;
-  grid-template-areas: "header" "content";
-  grid-template-rows: 10vh 1fr;
-  background-color: var(--txt-primary);
 }
 .user-header {
   display: flex;
@@ -16,39 +10,10 @@
   align-items: center;
 }
 
-.header-title {
+p.header-title {
   font-size: 2rem;
   font-weight: 700;
-}
-.user-list {
-  margin-top: 20px;
-  display: flex;
-  grid-area: "content";
-  flex-direction: column;
-  align-items: center;
-  row-gap: 5px;
-}
-
-.field-names,
-.user-data-container > .user-data {
-  width: 80vw;
-  display: grid;
-  grid-template-columns: 3vw repeat(4, 18vw);
-  grid-template-rows: 1fr;
-  column-gap: 5px;
-}
-
-.field-names {
-  width: 100%;
-}
-
-.user-data-container {
-  display: grid;
-  margin: 10px 0;
-  grid-template-areas: "data actions";
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr max-content;
-  row-gap: 5px;
+  margin: 0.5rem 0;
 }
 
 .field-names > *,
@@ -58,6 +23,8 @@
 }
 
 .actions > * {
+  outline: solid 2px transparent;
+  height: min-content;
   padding: 2px 5px;
   font-size: 1.2rem;
   margin: 0px 5px;
@@ -65,27 +32,51 @@
   border: solid 1px transparent;
 }
 
+.actions > .user-edit {
+  background-color: var(--green);
+  color: #fff;
+}
+
+.actions > .user-edit:hover {
+  outline-color: var(--green);
+}
+
+.actions > .user-delete {
+  background: var(--danger);
+  color: #fff;
+}
+
+.actions > .user-delete:hover {
+  outline-color: var(--danger);
+}
+
+.edit-panel {
+  display: none;
+  margin-top: 10px;
+  padding: 5px 0;
+  width: 80%;
+  height: max-content;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  background-color: var(--primary);
+}
+
+.edit-panel > * {
+  border-radius: 5px;
+  border-color: transparent;
+}
+
+.edit-panel > *:focus {
+  outline: none;
+}
+
+.send {
+  margin-top: 5px;
+}
 @media screen and (max-width: 950px) {
-  .field-names {
-    display: none;
-    opacity: 0;
-  }
-  .user-data-container {
-    grid-template-areas: "data" "actions";
-    grid-template-rows: 1fr max-content;
-    grid-template-columns: 1fr;
-  }
-  .user-data-container > .user-data {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-  }
   .actions {
-    grid-area: actions;
     display: flex;
     justify-self: center;
-  }
-  .user-data {
-    grid-area: "data";
-    row-gap: 5px;
   }
 }
