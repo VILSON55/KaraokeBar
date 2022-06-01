@@ -2,6 +2,9 @@ var express = require("express");
 var router = express.Router();
 
 const userController = require("../controllers/UserController");
+const itemController = require("../controllers/ItemController");
+const musicController = require("../controllers/MusicController");
+const orderController = require("../controllers/OrderController");
 const { isAuthenticated, isAdmin } = require("../middlewares/Auth");
 
 // Rotas GET da página Home
@@ -69,4 +72,26 @@ router
   .put("/user/update", isAuthenticated, userController.update)
   .delete("/user/delete/:id", isAdmin, userController.delete);
 
+  // Rotas do Menu
+  router
+  .get("/items", isAuthenticated, itemController.findAll)
+  .post("/item/create", isAuthenticated, itemController.create)
+  .put("/item/update/:id", isAuthenticated, itemController.update)
+  .delete("/item/delete/:id", isAuthenticated, itemController.delete)
+
+  // Rotas da Playlist
+  router
+  .get("/musics", isAuthenticated, musicController.findAll)
+  .post("/music/create", isAuthenticated, musicController.create)
+  .put("/music/update/:id", isAuthenticated, musicController.update)
+  .delete("/music/delete/:id", isAuthenticated, musicController.delete)
+
+  // Rotas de Pedidos
+  router
+  .get("/orders", isAuthenticated, orderController.findAll)
+  .post("/order/create", isAuthenticated, orderController.create)
+  .put("/order/update/:id", isAuthenticated, orderController.update)
+  .put("/order/finish/:id", isAuthenticated, orderController.finish)
+  .delete("/order/delete/:id", isAuthenticated, orderController.delete)
+  
 module.exports = router;

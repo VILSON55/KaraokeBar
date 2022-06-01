@@ -29,5 +29,40 @@ DROP TABLE `musics`;
 -- DropTable
 DROP TABLE `orders`;
 
+-- CreateTable
+CREATE TABLE `Music` (
+    `id` VARCHAR(191) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `artist` VARCHAR(255) NOT NULL,
+    `source` VARCHAR(255) NOT NULL,
+    `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Item` (
+    `id` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
+    `price` FLOAT NOT NULL,
+    `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Order` (
+    `id` VARCHAR(191) NOT NULL,
+    `tableNumber` INTEGER NOT NULL,
+    `items` VARCHAR(255) NOT NULL,
+    `totalPrice` FLOAT NOT NULL,
+    `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 -- RenameIndex
 ALTER TABLE `users` RENAME INDEX `users_email_key` TO `email`;
