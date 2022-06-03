@@ -7,45 +7,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String    @id @default(uuid())
-  name      String?   @db.VarChar(255)
-  email     String?   @unique() @db.VarChar(255)
-  password  String    @db.VarChar(255)
-  createdAt DateTime? @default(now()) @db.Timestamp(6)
-  updatedAt DateTime? @updatedAt
-  role      UserRole  @default(USER)
+model item {
+  id          String   @id
+  description String   @db.VarChar(255)
+  price       Float    @db.Float
+  createdAt   DateTime @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime
+  imgSrc      String   @db.VarChar(255)
 }
 
-model Music {
-  id        String   @id @default(uuid())
+model music {
+  id        String   @id
   title     String   @db.VarChar(255)
   artist    String   @db.VarChar(255)
   source    String   @db.VarChar(255)
   createdAt DateTime @default(now()) @db.Timestamp(6)
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime
 }
 
-model Item {
-  id          String   @id @default(uuid())
-  imgSrc      String   @db.VarChar(255)
-  description String   @db.VarChar(255)
-  price       Float    @db.Float
-  createdAt   DateTime @default(now()) @db.Timestamp(6)
-  updatedAt   DateTime @updatedAt
-}
-
-model Order {
-  id          String   @id @default(uuid())
+model order {
+  id          String   @id
   tableNumber Int
   items       String   @db.VarChar(255)
   totalPrice  Float    @db.Float
-  status      String   @default("Pendente") @db.VarChar(30)
   createdAt   DateTime @default(now()) @db.Timestamp(6)
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime
+  status      String   @default("Pendente") @db.VarChar(30)
 }
 
-enum UserRole {
+model user {
+  id        String    @id
+  name      String?   @db.VarChar(255)
+  email     String?   @unique(map: "User_email_key") @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt DateTime?
+  role      user_role @default(USER)
+}
+
+enum user_role {
   USER
   ADMIN
 }
