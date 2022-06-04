@@ -1,26 +1,23 @@
 <%- contentFor('body') %>
+<form action="/login" method="POST">
 <div class="modal-container">
   <div class="modal-form">
     <label class="loginlabel" for="email">Email</label>
-    <input class="logininput" type="text" id="email" />
+    <input class="logininput" name="email" type="text" id="email" />
     <label class="loginlabel" for="password">Senha</label>
-    <input class="logininput" type="password" id="password" />
-    <button class="loginbutton">Logar</button>
+    <input class="logininput" name="password" type="password" id="password" />
+    <button class="loginbutton" type="submit">Logar</button>
     <div class="spinner-border d-none align-self-center" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
 </div>
+</form>
 <script>
   const loginButton = document.querySelector(".loginbutton");
   loginButton.addEventListener("pointerdown", async (e) => {
-    const loginData = {
-      email: document.querySelector("#email").value,
-      password: document.querySelector("#password").value,
-    };
     const loading = document.querySelector(".modal-form .spinner-border");
     loading.classList.replace("d-none", "d-flex");
-    console.log(loading);
-    fetch("/login", { method: "post" }).then((res) => res.json(loginData));
   });
 </script>
+

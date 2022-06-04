@@ -14,26 +14,18 @@
       </tr>
     </thead>
     <tbody>
-      <% for(var i=0; i<user.length; i++) {%>
+      <%  users.forEach(user =>  { %>
         <tr>
-            <td scope="row" class="user-value" id="id<%= user[i].id%>"><%= user[i].id%></td>
-            <td class="user-value" id="id<%= user[i].id%>"><%= user[i].name%></td>
-            <td class="user-value" id="id<%= user[i].id%>"><%= user[i].email%></td>
-            <td class="user-value" id="id<%= user[i].id%>"><%= user[i].role === 'admin' ? 'Admin' : 'Usuário'%></td>
-          <td class="actions">
-            <button class="user-edit">Editar</button>
-            <button class="user-delete">Inativar</button>
-            <div class="edit-panel id<%= user[i].id%>">
-              <label for="name">Nome</label>
-              <input id='name' type="text" value="<%= user[i].name%>">
-              <label for="email">E-mail</label>
-              <input id='email' type="email" value="<%= user[i].email%>">
-              <label for="role">Cargo</label>
-              <input id='role' type="text" value="<%= user[i].role%>">
-              <button class="btn btn-success send">Salvar</button>
-            </div>
-          </td>
-     <% } %>
+            <td scope="row" class="user-value"><%= user.id %></td>
+            <td class="user-value"><%= user.name %></td>
+            <td class="user-value"><%= user.email %></td>
+            <td class="user-value"><%= user.role === 'ADMIN' ? 'Admin' : 'Usuário' %></td>
+            <td class="actions">
+              <a href="/user/update"><button class="user-edit">Editar</button></a>
+              <a href="/user/delete/<%= user.id %>"><button class="user-delete">Excluir</button></a>
+            </td>
+        </tr>
+     <% }) %>
     </tbody>
   </table>
 </div>

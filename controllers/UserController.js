@@ -64,7 +64,7 @@ class UserController {
 
     return res.render("pages/users", {
       title: "Usuários",
-      userList: res.status.json(users),
+      users
     });
   }
 
@@ -125,7 +125,7 @@ class UserController {
       },
     });
 
-    return res.status(204).send(deleteUser);
+    return res.status(300).redirect('/users')
   }
 }
 
