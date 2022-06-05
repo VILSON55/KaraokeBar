@@ -7,42 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model item {
-  id          String   @id
+model User {
+  id        String    @id @default(uuid())
+  name      String?   @db.VarChar(255)
+  email     String?   @unique @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt DateTime  @updatedAt
+  role      user_role @default(USER)
+}
+
+model Item {
+  id          String   @id @default(uuid())
   description String   @db.VarChar(255)
   price       Float    @db.Float
   createdAt   DateTime @default(now()) @db.Timestamp(6)
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
   imgSrc      String   @db.VarChar(255)
 }
 
-model music {
-  id        String   @id
+model Music {
+  id        String   @id @default(uuid())
   title     String   @db.VarChar(255)
   artist    String   @db.VarChar(255)
   source    String   @db.VarChar(255)
   createdAt DateTime @default(now()) @db.Timestamp(6)
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
-model order {
-  id          String   @id
+model Order {
+  id          String   @id @default(uuid())
   tableNumber Int
   items       String   @db.VarChar(255)
   totalPrice  Float    @db.Float
   createdAt   DateTime @default(now()) @db.Timestamp(6)
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
   status      String   @default("Pendente") @db.VarChar(30)
-}
-
-model user {
-  id        String    @id
-  name      String?   @db.VarChar(255)
-  email     String?   @unique(map: "User_email_key") @db.VarChar(255)
-  password  String    @db.VarChar(255)
-  createdAt DateTime? @default(now()) @db.Timestamp(6)
-  updatedAt DateTime?
-  role      user_role @default(USER)
 }
 
 enum user_role {
