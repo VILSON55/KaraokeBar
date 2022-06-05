@@ -22,7 +22,7 @@ p.header-title {
   font-size: 1.5rem;
 }
 
-.actions > * {
+.actions a > * {
   outline: solid 2px transparent;
   height: min-content;
   padding: 2px 5px;
@@ -32,47 +32,22 @@ p.header-title {
   border: solid 1px transparent;
 }
 
-.actions > .user-edit {
+.actions .user-edit {
   background-color: var(--green);
   color: #fff;
 }
 
-.actions > .user-edit:hover {
+.actions .user-edit:hover {
   outline-color: var(--green);
 }
 
-.actions > .user-delete {
+.actions .user-delete {
   background: var(--danger);
   color: #fff;
 }
 
-.actions > .user-delete:hover {
+.actions .user-delete:hover {
   outline-color: var(--danger);
-}
-
-.edit-panel {
-  display: none;
-  margin-top: 10px;
-  padding: 5px 0;
-  width: 80%;
-  height: max-content;
-  align-items: center;
-  justify-content: start;
-  flex-direction: column;
-  background-color: var(--primary);
-}
-
-.edit-panel > * {
-  border-radius: 5px;
-  border-color: transparent;
-}
-
-.edit-panel > *:focus {
-  outline: none;
-}
-
-.send {
-  margin-top: 5px;
 }
 @media screen and (max-width: 950px) {
   .actions {

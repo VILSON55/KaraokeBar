@@ -1,0 +1,15 @@
+<%- contentFor('body') %>
+<div class="grid-container user-creation">
+  <form method="post" id="formsubmit" action="/user/create">
+    <div class="user-inputs">
+      <label for="username">Nome</label>
+      <input class="userinput" type="text" id="username" name="name" />
+      <label for="email">E-mail</label>
+      <input class="userinput" type="email" id="email" name="email" />
+      <label for="password">Senha</label>
+      <input class="userinput" type="password" id="password" name="password" />
+    </div>
+
+    <button type="submit" class="submit">Criar Usuário</button>
+  </form>
+</div>

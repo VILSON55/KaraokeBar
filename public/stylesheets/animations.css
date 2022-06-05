@@ -1,20 +1,20 @@
 @keyframes grow {
   0% {
     transform: scale(1);
-    color: var(--txt-primary);
+    color: #fff;
   }
-  33% {
+  25% {
     color: #0ea13f;
   }
   50% {
     transform: scale(1.2);
     color: #1929b3;
   }
-  66% {
+  75% {
     color: #910803;
   }
   100% {
     transform: scale(1);
-    color: var(--txt-primary);
+    color: #fff;
   }
 }

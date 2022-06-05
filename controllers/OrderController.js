@@ -2,23 +2,34 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 class OrderController {
-
   async findAll(req, res) {
     const orders = await prisma.order.findMany();
 
     return res.status(200).json(orders);
   }
 
+  async orderPage(req, res) {
+    res.render("pages/pedido", {
+      title: "Pedido Online KaraokeBar",
+      content: {
+        title: "Pedido Online",
+      },
+    });
+  }
+
   async create(req, res) {
     let { tableNumber, items } = req.body;
 
-    let itemsFormatted = ''
+    let itemsFormatted = "";
 
-    items.forEach(item => {
-        itemsFormatted += `${item.description}, ${item.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br>`;
-    })
+    items.forEach((item) => {
+      itemsFormatted += `${item.description}, ${item.price.toLocaleString(
+        "pt-br",
+        { style: "currency", currency: "BRL" }
+      )}<br>`;
+    });
 
-    let totalPrice = items.reduce((total, item) => item.price + total, 0)
+    let totalPrice = items.reduce((total, item) => item.price + total, 0);
 
     const order = await prisma.order.create({
       data: {
@@ -32,31 +43,34 @@ class OrderController {
   }
 
   async finish(req, res) {
-      let { id } = req.params
+    let { id } = req.params;
 
-      const updateOrder = await prisma.order.update({
-          where: {
-              id,
-          },
-          data: {
-              status: "Concluído"
-          }
-      });
+    const updateOrder = await prisma.order.update({
+      where: {
+        id,
+      },
+      data: {
+        status: "Concluído",
+      },
+    });
 
-      res.status(200).send("Status Atualizado");
+    res.status(200).send("Status Atualizado");
   }
 
   async update(req, res) {
     const { tableNumber, items } = req.body;
     const { id } = req.params;
 
-    let itemsFormatted = ''
+    let itemsFormatted = "";
 
-    items.forEach(item => {
-        itemsFormatted += `${item.description}, ${item.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br>`;
-    })
+    items.forEach((item) => {
+      itemsFormatted += `${item.description}, ${item.price.toLocaleString(
+        "pt-br",
+        { style: "currency", currency: "BRL" }
+      )}<br>`;
+    });
 
-    let totalPrice = items.reduce((total, item) => item.price + total, 0)
+    let totalPrice = items.reduce((total, item) => item.price + total, 0);
 
     const updateOrder = await prisma.order.update({
       where: {

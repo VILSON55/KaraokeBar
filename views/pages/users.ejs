@@ -6,7 +6,6 @@
   <table class="table user-table table-info">
     <thead>
       <tr class="field-names">
-        <th>ID</th>
         <th>Nome</th>
         <th>E-mail</th>
         <th>Cargo</th>
@@ -14,60 +13,21 @@
       </tr>
     </thead>
     <tbody>
-      <%  users.forEach(user =>  { %>
-        <tr>
-            <td scope="row" class="user-value"><%= user.id %></td>
-            <td class="user-value"><%= user.name %></td>
-            <td class="user-value"><%= user.email %></td>
-            <td class="user-value"><%= user.role === 'ADMIN' ? 'Admin' : 'Usuário' %></td>
-            <td class="actions">
-              <a href="/user/update"><button class="user-edit">Editar</button></a>
-              <a href="/user/delete/<%= user.id %>"><button class="user-delete">Excluir</button></a>
-            </td>
-        </tr>
-     <% }) %>
+      <% users.forEach(user => { %>
+      <tr>
+        <td class="user-value"><%= user.name %></td>
+        <td class="user-value"><%= user.email %></td>
+        <td class="user-value">
+          <%= user.role === 'ADMIN' ? 'Admin' : 'Usuário' %>
+        </td>
+        <td class="actions">
+          <a href="/user/update"><button class="user-edit">Editar</button></a>
+          <a href="/user/delete/<%= user.id %>"
+            ><button class="user-delete">Excluir</button></a
+          >
+        </td>
+      </tr>
+      <% }) %>
     </tbody>
   </table>
 </div>
-<script>
-  function getEl (selector='', many='false') {
-    
-    return many ? document.querySelectorAll(selector) : document.querySelector(selector);
-  }
-
-  function getValue (selector='') {
-    return document.querySelector(selector).value || document.querySelector(selector).textContent || 'Cannot get value.';
-  }
-
-  async function sendData(userData) {
-    return await fetch('/user/update', {method: 'post'}).then(res => res.json(userData)).catch(null);
-  }
-
-  function init() {
-  const editUserList = getEl('.user-edit', true);
-  const deleteUserList = getEl('.user-delete', true);
-  const sendButtonList = getEl('.send', true);
-  editUserList.forEach(editUser => {
-    editUser.addEventListener('pointerup', function(e) {
-      const userId = e.target.parentNode.parentNode.children[0].textContent;
-      const editPanel = getEl(`.edit-panel.id${userId}`)[0];
-      if(editPanel.style.display !== 'flex'){
-        editPanel.style.display = 'flex'
-      } else editPanel.style.display = 'none';
-    })
-  })
-  sendButtonList.forEach(sendButton => {
-    sendButton.addEventListener('pointerup', function(e) {
-      const inputs = {
-        name : e.target.parentNode.children[1].value,
-        email : e.target.parentNode.children[3].value,
-        role : e.target.parentNode.children[5].value,
-      }
-      sendData(inputs);
-    })
-    
-  })
-}
-
-init();
-</script>

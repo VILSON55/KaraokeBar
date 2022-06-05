@@ -29,6 +29,13 @@ class UserController {
     res.status(201).send("Admin Criado!");
   }
 
+  async loginPage(req, res) {
+    res.render("pages/login", {
+      title: "Login de Usuários",
+      layout: "userLayout",
+    });
+  }
+
   async login(req, res) {
     const email = req.body.email;
     const password = req.body.password;
@@ -64,7 +71,15 @@ class UserController {
 
     return res.render("pages/users", {
       title: "Usuários",
-      users
+      users,
+      layout: "userLayout",
+    });
+  }
+
+  userCreatePage(req, res) {
+    res.render("pages/userCreate", {
+      title: "Criar Usuário",
+      layout: "userLayout",
     });
   }
 
@@ -92,7 +107,7 @@ class UserController {
       },
     });
 
-    return res.status(201).json(user);
+    return res.redirect("/users");
   }
 
   async update(req, res) {
@@ -125,7 +140,7 @@ class UserController {
       },
     });
 
-    return res.status(300).redirect('/users')
+    return res.status(300).redirect("/users");
   }
 }
 
