@@ -12,6 +12,22 @@ class ItemController {
     });
   }
 
+  async menuFindAll(req, res) {
+    const items = await prisma.item.findMany();
+
+    const drinks = items.filter((item) => item.type === "drink");
+    const foods = items.filter((item) => item.type === "food");
+
+    return res.status(200).render("pages/menu", {
+      title: "Cardápio KaraokeBar",
+      content: {
+        title: "Cardápio",
+      },
+      drinks,
+      foods,
+    });
+  }
+
   async create(req, res) {
     let { imgSrc, description, price } = req.body;
 

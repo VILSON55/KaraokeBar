@@ -12,20 +12,12 @@ router.get("/", function (req, res, next) {
   res.render("pages/home", {
     title: "KaraokeBar",
     content: {
-      title: "PlayList de Músicas",
+      title: "O bar com karaokê!",
     },
   });
 });
 
 // Rotas GET da página Cardápio
-router.get("/menu", function (req, res, next) {
-  res.render("pages/menu", {
-    title: "Cardápio KaraokeBar",
-    content: {
-      title: "Cardápio do Dia",
-    },
-  });
-});
 
 // Rotas GET da página Pedido Online
 router.get("/order", orderController.orderPage);
@@ -34,8 +26,8 @@ router.get("/order", orderController.orderPage);
 router
   .get("/loginpage", userController.loginPage)
   .get("/users", isAdmin, userController.findAll)
-  .post("/admin/create", userController.generateAdmin)
-  .get("/user/createpage", userController.userCreatePage)
+  .post("/admin/create", isAdmin, userController.generateAdmin)
+  .get("/user/createpage", isAdmin, userController.userCreatePage)
   .post("/user/create", isAdmin, userController.create)
   .post("/login", userController.login)
   .get("/user/updatepage", userController.updatePage)
@@ -44,11 +36,12 @@ router
 
 // Rotas do Menu
 router
+  .get("/menu", itemController.menuFindAll)
   .get("/items", isAuthenticated, itemController.findAll)
   .post("/item/create", isAuthenticated, itemController.create)
-  .get("/item/createpage", itemController.createPage)
+  .get("/item/createpage", isAuthenticated, itemController.createPage)
   .put("/item/update/:id", isAuthenticated, itemController.update)
-  .get("/item/updatepage/:id", itemController.updatePage)
+  .get("/item/updatepage/:id", isAuthenticated, itemController.updatePage)
   .delete("/item/delete/:id", isAuthenticated, itemController.delete);
 
 // Rotas da Playlist

@@ -1,3 +1,12 @@
-.card {
-  flex-grow: 1;
+#drinks > h2,
+#foods > h2 {
+  font-weight: 600;
+  color: var(--txt-primary);
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-grow: 1;
+  }
 }
