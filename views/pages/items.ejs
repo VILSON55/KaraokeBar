@@ -1,0 +1,22 @@
+<%- contentFor('body') %>
+<div class="card-container d-flex flex-row flex-wrap">
+  <% items.forEach(item => { %>
+  <div class="card" style="width: 18rem; margin: 5px 5px">
+    <img
+      class="card-img-top"
+      src="<%= item.imgSrc %>"
+      alt="<%= item.description %>"
+    />
+    <div class="card-body">
+      <h5 class="card-title"><%= item.description %></h5>
+      <p class="card-text"><b>R$</b><%= item.price %></p>
+      <a href="/item/updatepage/<%= item.id %>" class="card-link"
+        ><button class="button edit-btn">Editar</button></a
+      >
+      <a href="/item/delete/<%= item.id %>" class="card-link"
+        ><button class="button delete-btn float-right">Excluir</button></a
+      >
+    </div>
+  </div>
+  <% }) %>
+</div>

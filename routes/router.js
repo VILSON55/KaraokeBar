@@ -38,6 +38,7 @@ router
   .get("/user/createpage", userController.userCreatePage)
   .post("/user/create", isAdmin, userController.create)
   .post("/login", userController.login)
+  .get("/user/updatepage", userController.updatePage)
   .put("/user/update", isAuthenticated, userController.update)
   .get("/user/delete/:id", userController.delete);
 
@@ -45,7 +46,9 @@ router
 router
   .get("/items", isAuthenticated, itemController.findAll)
   .post("/item/create", isAuthenticated, itemController.create)
+  .get("/item/createpage", itemController.createPage)
   .put("/item/update/:id", isAuthenticated, itemController.update)
+  .get("/item/updatepage/:id", itemController.updatePage)
   .delete("/item/delete/:id", isAuthenticated, itemController.delete);
 
 // Rotas da Playlist

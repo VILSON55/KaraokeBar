@@ -2,11 +2,14 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 class ItemController {
-
   async findAll(req, res) {
     const items = await prisma.item.findMany();
 
-    return res.status(200).json(items);
+    return res.status(200).render("pages/items", {
+      title: "Items do Cardápio",
+      layout: "userLayout",
+      items,
+    });
   }
 
   async create(req, res) {
@@ -21,6 +24,13 @@ class ItemController {
     });
 
     return res.status(201).json(item);
+  }
+
+  createPage(req, res) {
+    res.render("pages/itemCreate", {
+      title: "Criar Item",
+      layout: "userLayout",
+    });
   }
 
   async update(req, res) {
@@ -39,6 +49,21 @@ class ItemController {
     });
 
     return res.status(200).send(updateItem);
+  }
+
+  updatePage(req, res) {
+    const { id } = req.params;
+    // Aqui precisa fazer a consulta no banco e trazer as informações dos itens.
+    res.render("pages/itemUpdate", {
+      title: "Atualizar Item",
+      layout: "userLayout",
+      item: {
+        // Só para testar, preencher com dados retornados do banco.
+        imgSrc: "images/drink/brett-jordan-nTYiBBiuRKU-unsplash.jpg",
+        description: "Cerveja Puro Malte",
+        price: 10,
+      },
+    });
   }
 
   async delete(req, res) {

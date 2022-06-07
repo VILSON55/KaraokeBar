@@ -1,6 +1,10 @@
 @import url("animations.css");
 @import url("login.css");
-@import url("userDashboard.css");
+@import url("userPage.css");
+@import url("userCreate.css");
+@import url("button-styles.css");
+@import url("input-styles.css");
+@import url("items.css");
 
 :root {
   --roxo: #59114d;

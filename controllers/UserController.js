@@ -131,6 +131,24 @@ class UserController {
     return res.status(200).send(updateUser);
   }
 
+  updatePage(req, res) {
+    const { id } = req.params;
+    // Fazer consulta para acessar dados do usuário aqui.
+    res.render("pages/userUpdate", {
+      title: "Atualizar Usuário",
+      layout: "userLayout",
+      content: {
+        title: "Usuário",
+      },
+      user: {
+        // Só teste, trocar pelos dados buscados do usuário
+        name: "Lucas",
+        email: "lcs@email.com",
+        password: "password",
+      },
+    });
+  }
+
   async delete(req, res) {
     const { id } = req.params;
 

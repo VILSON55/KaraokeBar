@@ -1,0 +1,40 @@
+<%- contentFor('body') %>
+<div class="grid-container">
+  <form class="form-submit" method="post" action="/item/update/<%= item.id %>">
+    <div class="user-inputs">
+      <label class="input-label w-80" for="thumbnail">Imagem</label>
+      <input
+        class="input w-80"
+        type="text"
+        id="thumbnail"
+        name="imgSrc"
+        placeholder="URL da imagem"
+        value="<%= item.imgSrc %>"
+      />
+      <label class="input-label w-80" for="desc">Descrição</label>
+      <input
+        class="input w-80"
+        type="text"
+        id="desc"
+        name="description"
+        placeholder="Nome do item"
+        value="<%= item.description %>"
+      />
+      <label class="input-label w-80" for="price">Preço (R$)</label>
+      <input
+        class="input w-80"
+        type="number"
+        step="0.1"
+        min="0.1"
+        max="9999"
+        id="price"
+        name="price"
+        placeholder="Preço do item"
+        value="<%= item.price %>"
+      />
+    </div>
+    <button type="submit" class="submit-btn button d-flex align-self-center">
+      Atualizar Item
+    </button>
+  </form>
+</div>

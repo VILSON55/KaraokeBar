@@ -1,0 +1,25 @@
+.form-submit {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  outline: 2px solid #add8e6;
+  border: solid 1px transparent;
+  border-radius: 2px;
+  background-color: rgba(211, 211, 211, 0.6);
+  margin: 6px 3px;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.input:hover {
+  outline-color: #70dbff;
+}
+
+.input-label {
+  margin: 6px 3px;
+  font-weight: 600;
+}
