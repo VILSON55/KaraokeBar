@@ -40,7 +40,7 @@ router
   .get("/items", isAuthenticated, itemController.findAll)
   .post("/item/create", isAuthenticated, itemController.create)
   .get("/item/createpage", isAuthenticated, itemController.createPage)
-  .put("/item/update/:id", isAuthenticated, itemController.update)
+  .post("/item/update/:id", isAuthenticated, itemController.update)
   .get("/item/updatepage/:id", isAuthenticated, itemController.updatePage)
   .delete("/item/delete/:id", isAuthenticated, itemController.delete);
 
