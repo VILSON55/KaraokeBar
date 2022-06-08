@@ -1,0 +1,34 @@
+<%- contentFor('body') %>
+<div class="grid-container">
+  <form class="form-submit" method="put" action="/music/update/<% music.id %>">
+    <div class="user-inputs">
+      <label class="input-label w-80" for="title">Título</label>
+      <input
+        class="input w-80"
+        type="text"
+        id="title"
+        name="title"
+        value="<%= music.title %>"
+      />
+      <label class="input-label w-80" for="artist">Artista</label>
+      <input
+        class="input w-80"
+        type="artist"
+        id="artist"
+        name="artist"
+        value="<%= music.artist %>"
+      />
+      <label class="input-label w-80" for="source">Caminho</label>
+      <input
+        class="input w-80"
+        type="source"
+        id="source"
+        name="source"
+        value="<%= music.source %>"
+      />
+    </div>
+    <button type="submit" class="submit-btn button d-flex align-self-center">
+      Atualizar Música
+    </button>
+  </form>
+</div>

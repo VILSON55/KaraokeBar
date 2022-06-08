@@ -1,4 +1,52 @@
 <%- contentFor('body') %>
-<div class="grid-container playlist">
+<div class="grid-container home">
   <h1 class="title"><%= content.title %></h1>
+  <div class="content-container background">
+    <h1 class="my-5 font-primary">
+      Aqui temos a melhor comida, melhor música e melhor conversa!
+    </h1>
+    <h2 class="my-5 font-primary animate-food">
+      Quer se alimentar? Clique no ícone do
+      <i style="color: white" class="fa-solid fa-book-open"></i> acima.
+    </h2>
+    <h2 class="my-5 font-primary animate-order">
+      Quer pedir algo antecipado? Clique no ícone do
+      <i style="color: white" class="fa-solid fa-cart-shopping"></i> acima.
+    </h2>
+  </div>
 </div>
+<script>
+  function animate() {
+    const food = document.querySelector(".animate-food");
+    const order = document.querySelector(".animate-order");
+    const foodMenu = document.querySelector(".menu");
+    const orderMenu = document.querySelector(".order");
+
+    function menuRemoveActive() {
+      orderMenu.classList.remove("active-menu");
+      foodMenu.classList.add("active-menu");
+      setTimeout(() => {
+        foodMenu.classList.remove("active-menu");
+      }, 3000);
+    }
+
+    function orderRemoveActive() {
+      foodMenu.classList.remove("active-menu");
+      orderMenu.classList.add("active-menu");
+      setTimeout(() => {
+        orderMenu.classList.remove("active-menu");
+      }, 3000);
+    }
+
+    food.addEventListener("mouseenter", menuRemoveActive);
+
+    order.addEventListener("mouseenter", orderRemoveActive);
+  }
+
+  animate();
+  window.onkeypress = function (e) {
+    if (e.key === "l") {
+      window.location.assign("/loginpage");
+    }
+  };
+</script>

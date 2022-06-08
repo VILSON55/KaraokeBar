@@ -48,7 +48,9 @@ router
 router
   .get("/musics", isAuthenticated, musicController.findAll)
   .post("/music/create", isAuthenticated, musicController.create)
+  .get("/music/createpage", isAuthenticated, musicController.createPage)
   .put("/music/update/:id", isAuthenticated, musicController.update)
+  .put("/music/updatepage/:id", isAuthenticated, musicController.updatePage)
   .delete("/music/delete/:id", isAuthenticated, musicController.delete);
 
 // Rotas de Pedidos
