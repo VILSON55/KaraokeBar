@@ -1,6 +1,10 @@
 <%- contentFor('body') %>
 <div class="grid-container">
+<<<<<<< HEAD
   <form class="form-submit" method="put" action="/user/update">
+=======
+  <form class="form-submit" method="post" action="/user/update/<%= user.id %>">
+>>>>>>> df9cf00e59d1aee52a85dc2f327ce58082949965
     <div class="user-inputs">
       <label class="input-label w-80" for="username">Nome</label>
       <input
@@ -24,7 +28,7 @@
         type="password"
         id="password"
         name="password"
-        value="<%= user.password %>"
+        placeholder="Sua senha"
       />
     </div>
     <button type="submit" class="submit-btn button d-flex align-self-center">

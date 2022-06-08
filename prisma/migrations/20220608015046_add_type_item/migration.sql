@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `item` ADD COLUMN `type` VARCHAR(255) NOT NULL DEFAULT 'food';

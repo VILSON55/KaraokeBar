@@ -31,6 +31,8 @@ class ItemController {
   async create(req, res) {
     let { imgSrc, description, price } = req.body;
 
+    price = parseFloat(price);
+
     const item = await prisma.item.create({
       data: {
         imgSrc,
@@ -39,7 +41,7 @@ class ItemController {
       },
     });
 
-    return res.status(201).json(item);
+    return res.redirect('/menu')
   }
 
   createPage(req, res) {
@@ -50,8 +52,10 @@ class ItemController {
   }
 
   async update(req, res) {
-    const { imgSrc, description, price } = req.body;
+    let { imgSrc, description, price } = req.body;
     const { id } = req.params;
+
+    price = parseFloat(price);
 
     const updateItem = await prisma.item.update({
       where: {
@@ -64,21 +68,22 @@ class ItemController {
       },
     });
 
-    return res.status(200).send(updateItem);
+    return res.redirect('/menu');
   }
 
-  updatePage(req, res) {
+  async updatePage(req, res) {
     const { id } = req.params;
-    // Aqui precisa fazer a consulta no banco e trazer as informações dos itens.
+    
+    const item = await prisma.item.findUnique({
+      where: {
+        id,
+      }
+    })
+
     res.render("pages/itemUpdate", {
       title: "Atualizar Item",
       layout: "userLayout",
-      item: {
-        // Só para testar, preencher com dados retornados do banco.
-        imgSrc: "images/drink/brett-jordan-nTYiBBiuRKU-unsplash.jpg",
-        description: "Cerveja Puro Malte",
-        price: 10,
-      },
+      item,
     });
   }
 
@@ -91,7 +96,7 @@ class ItemController {
       },
     });
 
-    return res.status(204).send(deleteItem);
+    return res.redirect('/menu');
   }
 }
 

@@ -21,7 +21,7 @@
           <%= user.role === 'ADMIN' ? 'Admin' : 'Usuário' %>
         </td>
         <td class="actions">
-          <a href="/user/update"
+          <a href="/user/updatepage/<%= user.id %>"
             ><button class="button edit-btn">Editar</button></a
           >
           <a href="/user/delete/<%= user.id %>"

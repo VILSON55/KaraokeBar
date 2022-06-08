@@ -30,8 +30,8 @@ router
   .get("/user/createpage", isAdmin, userController.userCreatePage)
   .post("/user/create", isAdmin, userController.create)
   .post("/login", userController.login)
-  .get("/user/updatepage", userController.updatePage)
-  .put("/user/update", isAuthenticated, userController.update)
+  .get("/user/updatepage/:id", userController.updatePage)
+  .post("/user/update/:id", isAuthenticated, userController.update)
   .get("/user/delete/:id", userController.delete);
 
 // Rotas do Menu
@@ -40,9 +40,9 @@ router
   .get("/items", isAuthenticated, itemController.findAll)
   .post("/item/create", isAuthenticated, itemController.create)
   .get("/item/createpage", isAuthenticated, itemController.createPage)
-  .put("/item/update/:id", isAuthenticated, itemController.update)
+  .post("/item/update/:id", isAuthenticated, itemController.update)
   .get("/item/updatepage/:id", isAuthenticated, itemController.updatePage)
-  .delete("/item/delete/:id", isAuthenticated, itemController.delete);
+  .get("/item/delete/:id", isAuthenticated, itemController.delete);
 
 // Rotas da Playlist
 router

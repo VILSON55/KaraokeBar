@@ -21,6 +21,7 @@ model Item {
   id          String   @id @default(uuid())
   description String   @db.VarChar(255)
   price       Float    @db.Float
+  type        String   @default("food") @db.VarChar(255)
   createdAt   DateTime @default(now()) @db.Timestamp(6)
   updatedAt   DateTime @updatedAt
   imgSrc      String   @db.VarChar(255)
