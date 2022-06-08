@@ -42,7 +42,7 @@ router
   .get("/item/createpage", isAuthenticated, itemController.createPage)
   .post("/item/update/:id", isAuthenticated, itemController.update)
   .get("/item/updatepage/:id", isAuthenticated, itemController.updatePage)
-  .delete("/item/delete/:id", isAuthenticated, itemController.delete);
+  .get("/item/delete/:id", isAuthenticated, itemController.delete);
 
 // Rotas da Playlist
 router
