@@ -41,7 +41,7 @@ class ItemController {
       },
     });
 
-    return res.redirect('/pages/menu')
+    return res.redirect('/menu')
   }
 
   createPage(req, res) {
@@ -68,7 +68,7 @@ class ItemController {
       },
     });
 
-    return res.redirect('/pages/menu');
+    return res.redirect('/menu');
   }
 
   async updatePage(req, res) {
@@ -96,7 +96,7 @@ class ItemController {
       },
     });
 
-    return res.redirect('/pages/menu');
+    return res.redirect('/menu');
   }
 }
 

@@ -30,8 +30,8 @@ router
   .get("/user/createpage", isAdmin, userController.userCreatePage)
   .post("/user/create", isAdmin, userController.create)
   .post("/login", userController.login)
-  .get("/user/updatepage", userController.updatePage)
-  .put("/user/update", isAuthenticated, userController.update)
+  .get("/user/updatepage/:id", userController.updatePage)
+  .post("/user/update/:id", isAuthenticated, userController.update)
   .get("/user/delete/:id", userController.delete);
 
 // Rotas do Menu

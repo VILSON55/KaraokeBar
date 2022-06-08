@@ -112,7 +112,7 @@ class UserController {
 
   async update(req, res) {
     const { name, email, password } = req.body;
-    const { id } = req.session.login;
+    const { id } = req.params;
 
     const salt = bcrypt.genSaltSync(10);
     const passwordCrypted = bcrypt.hashSync(password, salt);
@@ -128,24 +128,25 @@ class UserController {
       },
     });
 
-    return res.status(200).send(updateUser);
+    return res.redirect('/users')
   }
 
-  updatePage(req, res) {
+  async updatePage(req, res) {
     const { id } = req.params;
-    // Fazer consulta para acessar dados do usuário aqui.
+  
+    let user = await prisma.user.findUnique({
+      where: {
+        id,
+      }
+    })
+
     res.render("pages/userUpdate", {
       title: "Atualizar Usuário",
       layout: "userLayout",
       content: {
         title: "Usuário",
       },
-      user: {
-        // Só teste, trocar pelos dados buscados do usuário
-        name: "Lucas",
-        email: "lcs@email.com",
-        password: "password",
-      },
+      user,
     });
   }
 
