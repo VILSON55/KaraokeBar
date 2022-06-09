@@ -35,3 +35,13 @@
   color: #000;
   background-color: #f84453;
 }
+
+.orange-btn {
+  color: #fff;
+  background-color: var(--txt-primary);
+}
+
+.orange-btn:hover {
+  color: #000;
+  background-color: #f8b86a;
+}

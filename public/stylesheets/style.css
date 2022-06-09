@@ -5,6 +5,7 @@
 @import url("button-styles.css");
 @import url("input-styles.css");
 @import url("items.css");
+@import url("dashboard.css");
 
 :root {
   --roxo: #59114d;
@@ -44,7 +45,7 @@ header {
 
 header > .navbar-kb {
   background-color: var(--txt-primary);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
 }
 
@@ -130,7 +131,7 @@ footer .links > .github:hover {
 
 .active-menu {
   position: relative;
-  animation: popup 0.5s ease-in-out infinite;
+  animation: popup 1s ease-in-out infinite;
 }
 
 .background {

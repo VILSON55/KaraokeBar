@@ -8,7 +8,7 @@
       <tr class="field-names">
         <th>Título</th>
         <th>Artista</th>
-        <th>Caminho</th>
+        <th>Música</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -17,7 +17,12 @@
       <tr>
         <td class="user-value"><%= music.title %></td>
         <td class="user-value"><%= music.artist %></td>
-        <td class="user-value"><%= music.source %></td>
+        <td class="user-value">
+          <audio controls>
+            <source src="<%= music.source %>" type="audio/mpeg" />
+            Seu navegador não suporta áudio tag.
+          </audio>
+        </td>
         <td class="actions">
           <a href="/music/updatepage/<%= music.id %>"
             ><button class="button edit-btn">Editar</button></a
@@ -31,3 +36,4 @@
     </tbody>
   </table>
 </div>
+<script></script>

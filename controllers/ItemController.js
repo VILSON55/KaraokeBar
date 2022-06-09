@@ -29,7 +29,7 @@ class ItemController {
   }
 
   async create(req, res) {
-    let { imgSrc, description, price } = req.body;
+    let { imgSrc, description, price, type } = req.body;
 
     price = parseFloat(price);
 
@@ -41,7 +41,7 @@ class ItemController {
       },
     });
 
-    return res.redirect('/menu')
+    return res.redirect("/menu");
   }
 
   createPage(req, res) {
@@ -52,7 +52,7 @@ class ItemController {
   }
 
   async update(req, res) {
-    let { imgSrc, description, price } = req.body;
+    let { imgSrc, description, price, type } = req.body;
     const { id } = req.params;
 
     price = parseFloat(price);
@@ -65,20 +65,21 @@ class ItemController {
         imgSrc,
         description,
         price,
+        type,
       },
     });
 
-    return res.redirect('/menu');
+    return res.redirect("/menu");
   }
 
   async updatePage(req, res) {
     const { id } = req.params;
-    
+
     const item = await prisma.item.findUnique({
       where: {
         id,
-      }
-    })
+      },
+    });
 
     res.render("pages/itemUpdate", {
       title: "Atualizar Item",
@@ -96,7 +97,7 @@ class ItemController {
       },
     });
 
-    return res.redirect('/menu');
+    return res.redirect("/menu");
   }
 }
 

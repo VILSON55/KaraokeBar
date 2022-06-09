@@ -17,14 +17,17 @@ router.get("/", function (req, res, next) {
   });
 });
 
-// Rotas GET da página Cardápio
-
-// Rotas GET da página Pedido Online
-router.get("/order", orderController.orderPage);
+router.get("/admin/dashboard", (req, res) => {
+  res.render("pages/adminDashboard", {
+    title: "Admin Dashboard",
+    layout: "userLayout",
+  });
+});
 
 // Rotas de Usuário
 router
   .get("/loginpage", userController.loginPage)
+  .get("/dashboard", userController.dashBoard)
   .get("/users", isAdmin, userController.findAll)
   .post("/admin/create", isAdmin, userController.generateAdmin)
   .get("/user/createpage", isAdmin, userController.userCreatePage)

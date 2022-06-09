@@ -54,7 +54,8 @@ class UserController {
           id: user.id,
           role: user.role,
         };
-
+        if (req.session.login.role === "ADMIN")
+          return res.redirect("/dashboard");
         return res.redirect("/");
       }
 
@@ -64,6 +65,16 @@ class UserController {
     return res
       .status(404)
       .send("Não existe nenhum usuário cadastrado com esse email!");
+  }
+
+  dashBoard(req, res) {
+    res.render("pages/userDashboard", {
+      title: "Dashboard",
+      layout: "userLayout",
+      content: {
+        title: "Admin Dashboard",
+      },
+    });
   }
 
   async findAll(req, res) {
@@ -128,17 +139,17 @@ class UserController {
       },
     });
 
-    return res.redirect('/users')
+    return res.redirect("/users");
   }
 
   async updatePage(req, res) {
     const { id } = req.params;
-  
+
     let user = await prisma.user.findUnique({
       where: {
         id,
-      }
-    })
+      },
+    });
 
     res.render("pages/userUpdate", {
       title: "Atualizar Usuário",

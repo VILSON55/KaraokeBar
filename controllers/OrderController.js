@@ -5,11 +5,7 @@ class OrderController {
   async findAll(req, res) {
     const orders = await prisma.order.findMany();
 
-    return res.status(200).json(orders);
-  }
-
-  async orderPage(req, res) {
-    res.render("pages/pedido", {
+    return res.status(200).render("pages/orders", {
       title: "Pedido Online KaraokeBar",
       content: {
         title: "Pedido Online",

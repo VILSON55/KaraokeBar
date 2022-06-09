@@ -13,9 +13,13 @@
       />
       <label class="input-label w-80" for="itemtype">Tipo</label>
       <select class="input w-80" name="type" id="itemtype" required>
-        <option selected disabled>Selecione um valor</option>
+        <% if(item.type === 'food') { %>
         <option value="drink">Bebida</option>
+        <option selected value="food">Prato/porção</option>
+        <% } else { %>
+        <option selected value="drink">Bebida</option>
         <option value="food">Prato/porção</option>
+        <% } %>
       </select>
       <label class="input-label w-80" for="desc">Descrição</label>
       <input

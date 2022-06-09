@@ -1,0 +1,11 @@
+.board {
+  background-color: burlywood;
+  border-radius: 5%;
+  border: solid 1px transparent;
+  width: 20%;
+  align-items: center;
+}
+
+.user-actions {
+  align-items: center;
+}

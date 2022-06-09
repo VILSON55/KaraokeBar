@@ -1,0 +1,66 @@
+<%- contentFor('body') %>
+<div id="container">
+  <h1 class="title"><%= content.title %></h1>
+  <div class="dashboard d-flex">
+    <div class="board mx-3 d-flex flex-column">
+      <label for="u-actions" class="input-label mx-3 my-4">Usuários</label>
+      <div class="user-actions d-flex flex-column" id="u-actions">
+        <a style="width: max-content" href="/users"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Lista
+          </button></a
+        >
+        <a style="width: max-content" href="/user/createpage"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Criar
+          </button></a
+        >
+      </div>
+    </div>
+    <div class="board mx-3 d-flex flex-column">
+      <label for="u-actions" class="input-label mx-3 my-4">Músicas</label>
+      <div class="user-actions d-flex flex-column" id="u-actions">
+        <a style="width: max-content" href="/musics"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Lista
+          </button></a
+        >
+        <a style="width: max-content" href="/music/createpage"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Adicionar
+          </button></a
+        >
+      </div>
+    </div>
+    <div class="board mx-3 d-flex flex-column">
+      <label for="u-actions" class="input-label mx-3 my-4">Cardápio</label>
+      <div class="user-actions d-flex flex-column" id="u-actions">
+        <a style="width: max-content" href="/items"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Lista
+          </button></a
+        >
+        <a style="width: max-content" href="/item/createpage"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Criar
+          </button></a
+        >
+      </div>
+    </div>
+    <div class="board mx-3 d-flex flex-column">
+      <label for="u-actions" class="input-label mx-3 my-4">Pedidos</label>
+      <div class="user-actions d-flex flex-column" id="u-actions">
+        <a style="width: max-content" href="/orders"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Lista
+          </button></a
+        >
+        <a style="width: max-content" href="/order/createpage"
+          ><button class="button orange-btn mx-3 my-4 px-2 py-1">
+            Criar
+          </button></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
