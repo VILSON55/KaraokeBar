@@ -20,6 +20,7 @@ router.get("/", function (req, res, next) {
 // Rotas de Usuário
 router
   .get("/loginpage", userController.loginPage)
+  .get("/dashboard", userController.dashBoard)
   .get("/users", isAdmin, userController.findAll)
   .post("/admin/create", isAdmin, userController.generateAdmin)
   .get("/user/createpage", isAdmin, userController.userCreatePage)
@@ -43,8 +44,10 @@ router
 router
   .get("/musics", isAuthenticated, musicController.findAll)
   .post("/music/create", isAuthenticated, musicController.create)
-  .put("/music/update/:id", isAuthenticated, musicController.update)
-  .delete("/music/delete/:id", isAuthenticated, musicController.delete);
+  .get("/music/createpage", isAuthenticated, musicController.createPage)
+  .post("/music/update/:id", isAuthenticated, musicController.update)
+  .get("/music/updatepage/:id", isAuthenticated, musicController.updatePage)
+  .get("/music/delete/:id", isAuthenticated, musicController.delete);
 
 // Rotas de Pedidos
 router

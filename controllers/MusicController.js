@@ -2,11 +2,14 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 class MusicController {
-
   async findAll(req, res) {
     const musics = await prisma.music.findMany();
 
-    return res.status(200).json(musics);
+    return res.status(200).render("pages/music", {
+      title: "Playlist de músicas",
+      layout: "userLayout",
+      musics,
+    });
   }
 
   async create(req, res) {
@@ -20,7 +23,14 @@ class MusicController {
       },
     });
 
-    return res.status(201).json(music);
+    return res.redirect("/musics")
+  }
+
+  createPage(req, res) {
+    res.render("pages/musicCreate", {
+      title: "Adicionar Música",
+      layout: "userLayout",
+    });
   }
 
   async update(req, res) {
@@ -38,7 +48,23 @@ class MusicController {
       },
     });
 
-    return res.status(200).send(updateMusic);
+    return res.redirect("/musics")
+  }
+
+  async updatePage(req, res) {
+    const { id } = req.params;
+    
+    const music = await prisma.music.findUnique({
+      where: {
+        id,
+      }
+    })
+
+    res.render("pages/musicUpdate", {
+      title: "Atualizar Música",
+      layout: "userLayout",
+      music
+    });
   }
 
   async delete(req, res) {
@@ -50,7 +76,7 @@ class MusicController {
       },
     });
 
-    return res.status(204).send(deleteMusic);
+    return res.redirect("/musics")
   }
 }
 

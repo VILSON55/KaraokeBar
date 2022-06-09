@@ -1,0 +1,39 @@
+<%- contentFor('body') %>
+<div class="grid-container content">
+  <div class="user-header">
+    <p class="header-title">Músicas</p>
+  </div>
+  <table class="table user-table table-info">
+    <thead>
+      <tr class="field-names">
+        <th>Título</th>
+        <th>Artista</th>
+        <th>Música</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% musics.forEach(music => { %>
+      <tr>
+        <td class="user-value"><%= music.title %></td>
+        <td class="user-value"><%= music.artist %></td>
+        <td class="user-value">
+          <audio controls>
+            <source src="<%= music.source %>" type="audio/mpeg" />
+            Seu navegador não suporta áudio tag.
+          </audio>
+        </td>
+        <td class="actions">
+          <a href="/music/updatepage/<%= music.id %>"
+            ><button class="button edit-btn">Editar</button></a
+          >
+          <a href="/music/delete/<%= music.id %>"
+            ><button class="button delete-btn">Excluir</button></a
+          >
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<script></script>
