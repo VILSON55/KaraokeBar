@@ -5,7 +5,9 @@ function isAuthenticated(req, res, next) {
 
   return res
     .status(403)
-    .send("Para acessar essa página você precisa estar logado!");
+    .send(
+      "<p>Para acessar essa página você precisa estar logado!<p><script>setTimeout(()=> {window.location.assign('/loginpage')}, 3000)</script>"
+    );
 }
 
 function isAdmin(req, res, next) {
