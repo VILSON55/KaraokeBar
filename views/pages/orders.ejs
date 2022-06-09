@@ -1,0 +1,40 @@
+<%- contentFor('body') %>
+<div class="grid-container content">
+  <div class="user-header">
+    <p class="header-title">Pedidos</p>
+  </div>
+  <table class="table user-table table-info">
+    <thead>
+      <tr class="field-names">
+        <th>Número da mesa</th>
+        <th>Pedido</th>
+        <th>Preço total</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(order => { %>
+      <tr>
+        <td class="user-value"><%= order.tableNumber %></td>
+        <td class="user-value"><%= order.items %></td>
+        <td class="user-value"><%= order.totalPrice %></td>
+        <td class="user-value"><%= order.status %></td>
+        <td class="actions">
+            <% if(order.status == 'Pendente'){ %>
+                <a href="/order/finish/<%= order.id %>"
+                    ><button class="button edit-btn">Concluir</button></a
+                  >
+             <% } %>
+          <a href="/order/updatepage/<%= order.id %>"
+            ><button class="button edit-btn">Editar</button></a
+          >
+          <a href="/order/delete/<%= order.id %>"
+            ><button class="button delete-btn">Excluir</button></a
+          >
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

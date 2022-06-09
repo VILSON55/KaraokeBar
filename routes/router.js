@@ -17,11 +17,6 @@ router.get("/", function (req, res, next) {
   });
 });
 
-// Rotas GET da página Cardápio
-
-// Rotas GET da página Pedido Online
-router.get("/order", orderController.orderPage);
-
 // Rotas de Usuário
 router
   .get("/loginpage", userController.loginPage)
@@ -54,9 +49,11 @@ router
 // Rotas de Pedidos
 router
   .get("/orders", isAuthenticated, orderController.findAll)
-  .post("/order/create", isAuthenticated, orderController.create)
-  .put("/order/update/:id", isAuthenticated, orderController.update)
-  .put("/order/finish/:id", isAuthenticated, orderController.finish)
-  .delete("/order/delete/:id", isAuthenticated, orderController.delete);
+  .post("/order/create", orderController.create)
+  .get("/order/createpage", orderController.createPage)
+  .post("/order/update/:id", isAuthenticated, orderController.update)
+  .get("/order/updatepage/:id", isAuthenticated, orderController.updatePage)
+  .get("/order/finish/:id", isAuthenticated, orderController.finish)
+  .get("/order/delete/:id", isAuthenticated, orderController.delete);
 
 module.exports = router;

@@ -29,7 +29,7 @@ class ItemController {
   }
 
   async create(req, res) {
-    let { imgSrc, description, price } = req.body;
+    let { imgSrc, description, price,  type } = req.body;
 
     price = parseFloat(price);
 
@@ -38,6 +38,7 @@ class ItemController {
         imgSrc,
         description,
         price,
+        type,
       },
     });
 
@@ -52,7 +53,7 @@ class ItemController {
   }
 
   async update(req, res) {
-    let { imgSrc, description, price } = req.body;
+    let { imgSrc, description, price, type } = req.body;
     const { id } = req.params;
 
     price = parseFloat(price);
@@ -65,6 +66,7 @@ class ItemController {
         imgSrc,
         description,
         price,
+        type
       },
     });
 

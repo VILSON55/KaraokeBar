@@ -5,31 +5,49 @@ class OrderController {
   async findAll(req, res) {
     const orders = await prisma.order.findMany();
 
-    return res.status(200).json(orders);
+    return res.status(200).render("pages/orders", {
+      title: "Pedido Online KaraokeBar",
+      content: {
+        title: "Pedido Online"
+      },
+      orders
+    })
   }
 
-  async orderPage(req, res) {
-    res.render("pages/pedido", {
+  async createPage(req, res) {
+    const items = await prisma.item.findMany();
+
+    return res.status(200).render("pages/orderCreate", {
       title: "Pedido Online KaraokeBar",
       content: {
         title: "Pedido Online",
       },
-    });
+      items,
+      layout: "userLayout" 
+    })
   }
 
   async create(req, res) {
     let { tableNumber, items } = req.body;
 
+    tableNumber = Number(tableNumber);
+
+    let infoItems = await prisma.item.findMany({
+      where: {
+        id: { in: items },
+    }
+    })
+
     let itemsFormatted = "";
 
-    items.forEach((item) => {
+    infoItems.forEach((item) => {
       itemsFormatted += `${item.description}, ${item.price.toLocaleString(
         "pt-br",
         { style: "currency", currency: "BRL" }
-      )}<br>`;
+      )} | `;
     });
 
-    let totalPrice = items.reduce((total, item) => item.price + total, 0);
+    let totalPrice = infoItems.reduce((total, item) => item.price + total, 0);
 
     const order = await prisma.order.create({
       data: {
@@ -39,7 +57,7 @@ class OrderController {
       },
     });
 
-    return res.status(201).json(order);
+    return res.redirect('/orders')
   }
 
   async finish(req, res) {
@@ -54,23 +72,53 @@ class OrderController {
       },
     });
 
-    res.status(200).send("Status Atualizado");
+    res.redirect("/orders");
+  }
+
+  async updatePage(req, res) {
+    const { id } = req.params;
+
+    const items = await prisma.item.findMany();
+
+    const order = await prisma.order.findUnique({
+      where: {
+        id,
+      }
+    })
+
+    return res.status(200).render("pages/orderUpdate", {
+      title: "Atualizar Pedido",
+      content: {
+        title: "Atualizar Pedido",
+      },
+      items,
+      order,
+      layout: "userLayout" 
+    })
   }
 
   async update(req, res) {
-    const { tableNumber, items } = req.body;
+    let { tableNumber, items } = req.body;
     const { id } = req.params;
+
+    tableNumber = Number(tableNumber);
+
+    let infoItems = await prisma.item.findMany({
+      where: {
+        id: { in: items },
+    }
+    })
 
     let itemsFormatted = "";
 
-    items.forEach((item) => {
+    infoItems.forEach((item) => {
       itemsFormatted += `${item.description}, ${item.price.toLocaleString(
         "pt-br",
         { style: "currency", currency: "BRL" }
-      )}<br>`;
+      )} | `;
     });
 
-    let totalPrice = items.reduce((total, item) => item.price + total, 0);
+    let totalPrice = infoItems.reduce((total, item) => item.price + total, 0);
 
     const updateOrder = await prisma.order.update({
       where: {
@@ -83,7 +131,7 @@ class OrderController {
       },
     });
 
-    return res.status(200).send(updateOrder);
+    return res.redirect("/orders")
   }
 
   async delete(req, res) {
@@ -95,7 +143,7 @@ class OrderController {
       },
     });
 
-    return res.status(204).send(deleteOrder);
+    return res.redirect("/orders")
   }
 }
 

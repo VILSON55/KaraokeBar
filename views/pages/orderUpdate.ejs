@@ -1,0 +1,17 @@
+<%- contentFor('body') %>
+<div class="grid-container">
+  <form class="form-submit" method="post" action="/order/update/<%= order.id %>">
+    <div class="user-inputs">
+      <label class="input-label w-80" for="tableNumber">Número da mesa</label>
+      <input class="input w-80" type="text" id="tableNumber" name="tableNumber" value="<%= order.tableNumber %>" />
+      <select name="items" multiple>
+      <% items.forEach(item => { %>
+        <option value="<%= item.id %>"><%= item.description %> || <%= item.price %></option>
+      <% }) %>
+      </select>
+    </div>
+    <button type="submit" class="submit-btn button d-flex align-self-center">
+      Atualizar Pedido
+    </button>
+  </form>
+</div>
