@@ -14,7 +14,9 @@
       />
       <div class="card-body">
         <h5 class="card-title"><%= food.description %></h5>
-        <p class="card-text"><b>R$</b> <%= food.price %></p>
+        <p class="card-text">
+          <b>R$</b> <%= food.price.toFixed(2).toString().replace('.', ',') %>
+        </p>
       </div>
     </div>
     <% }) %>
@@ -32,7 +34,9 @@
       />
       <div class="card-body">
         <h5 class="card-title"><%= drink.description %></h5>
-        <p class="card-text"><b>R$</b><%= drink.price %></p>
+        <p class="card-text">
+          <b>R$</b><%= drink.price.toFixed(2).toString().replace('.', ',') %>
+        </p>
       </div>
     </div>
     <% }) %>

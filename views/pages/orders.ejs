@@ -24,7 +24,9 @@
             <% }) %>
           </ul>
         </td>
-        <td class="user-value"><%= order.totalPrice %></td>
+        <td class="user-value">
+          <%= order.totalPrice.toFixed(2).toString().replace('.', ',') %>
+        </td>
         <td class="user-value"><%= order.status %></td>
         <td class="actions">
           <% if(order.status == 'Pendente'){ %>

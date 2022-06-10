@@ -3,7 +3,11 @@ const prisma = new PrismaClient();
 
 class OrderController {
   async findAll(req, res) {
-    const orders = await prisma.order.findMany();
+    const orders = await prisma.order.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return res.status(200).render("pages/orders", {
       title: "Pedido Online KaraokeBar",
@@ -16,7 +20,11 @@ class OrderController {
   }
 
   async createPage(req, res) {
-    const items = await prisma.item.findMany();
+    const items = await prisma.item.findMany({
+      orderBy: {
+        type: "asc",
+      },
+    });
 
     return res.status(200).render("pages/orderCreate", {
       title: "Pedido Online KaraokeBar",
@@ -24,12 +32,12 @@ class OrderController {
         title: "Pedido Online",
       },
       items,
-      layout: "userLayout",
     });
   }
 
   async create(req, res) {
     let { tableNumber, items } = req.body;
+    console.log(items);
 
     tableNumber = Number(tableNumber);
 
@@ -54,14 +62,10 @@ class OrderController {
       data: {
         tableNumber,
         items: itemsFormatted,
-        totalPrice: totalPrice.toLocaleString("pt-br", {
-          style: "currency",
-          currency: "BRL",
-        }),
+        totalPrice,
       },
     });
-
-    return res.redirect("/orders");
+    return res.redirect("/");
   }
 
   async finish(req, res) {

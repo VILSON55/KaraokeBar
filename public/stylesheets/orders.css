@@ -16,3 +16,10 @@
   width: 100%;
   background-color: lightslategrey;
 }
+
+.order-checkbox {
+  width: 2rem;
+  height: 2rem;
+  left: 0.5rem;
+  top: 0.5rem;
+}

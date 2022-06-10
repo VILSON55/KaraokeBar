@@ -1,14 +1,54 @@
 <%- contentFor('body') %>
+<div class="grid-container pedido">
+  <h1 class="title"><%= content.title %></h1>
+</div>
 <div class="grid-container">
   <form class="form-submit" method="post" action="/order/create">
-    <div class="user-inputs">
+    <div class="container">
       <label class="input-label w-80" for="tableNumber">Número da mesa</label>
-      <input class="input w-80" type="text" id="tableNumber" name="tableNumber" />
-      <select name="items" multiple>
-      <% items.forEach(item => { %>
-        <option value="<%= item.id %>"><%= item.description %> || <%= item.price %></option>
-      <% }) %>
-      </select>
+      <input
+        required
+        class="input mb-4 w-80"
+        type="text"
+        id="tableNumber"
+        name="tableNumber"
+      />
+      <div class="card-container d-flex flex-row flex-wrap">
+        <% items.forEach(item => { %>
+        <div
+          class="card position-relative"
+          style="width: 18rem; margin: 5px 5px"
+        >
+          <input
+            type="checkbox"
+            name="items"
+            class="order-checkbox position-absolute"
+            value="<%= item.id %>"
+          />
+          <img
+            class="card-img-top"
+            src="/<%= item.imgSrc %>"
+            alt="<%= item.description %>"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= item.description %></h5>
+            <p class="card-text">
+              <b>R$</b> <%= item.price.toFixed(2).toString().replace('.', ',')
+              %>
+            </p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+
+      <!-- <select name="items" multiple>
+        <% items.forEach(item => { %>
+        <option value="<%= item.id %>">
+          <%= item.description %> || <%=
+          item.price.toFixed(2).toString().replace('.', ',') %>
+        </option>
+        <% }) %>
+      </select> -->
     </div>
     <button type="submit" class="submit-btn button d-flex align-self-center">
       Criar Pedido
