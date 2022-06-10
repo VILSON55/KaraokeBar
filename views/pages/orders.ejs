@@ -17,15 +17,21 @@
       <% orders.forEach(order => { %>
       <tr>
         <td class="user-value"><%= order.tableNumber %></td>
-        <td class="user-value"><%= order.items %></td>
+        <td class="user-value">
+          <ul class="items-ul">
+            <% order.items.split('|').forEach(item => { %>
+            <li class="items-li"><%= item %></li>
+            <% }) %>
+          </ul>
+        </td>
         <td class="user-value"><%= order.totalPrice %></td>
         <td class="user-value"><%= order.status %></td>
         <td class="actions">
-            <% if(order.status == 'Pendente'){ %>
-                <a href="/order/finish/<%= order.id %>"
-                    ><button class="button edit-btn">Concluir</button></a
-                  >
-             <% } %>
+          <% if(order.status == 'Pendente'){ %>
+          <a href="/order/finish/<%= order.id %>"
+            ><button class="button edit-btn">Concluir</button></a
+          >
+          <% } %>
           <a href="/order/updatepage/<%= order.id %>"
             ><button class="button edit-btn">Editar</button></a
           >

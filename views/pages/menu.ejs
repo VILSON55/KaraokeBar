@@ -1,36 +1,40 @@
 <%- contentFor('body') %>
 <div class="grid-container menu">
   <h1 class="title"><%= content.title %></h1>
+  <% if(foods.length) { %>
+  <h2 class="menu-h2">Pratos e porções</h2>
+  <% } %>
   <div class="card-container d-flex flex-row flex-wrap" id="drinks">
-    <h2>Pratos e porções</h2>
     <% foods.forEach(food => { %>
-      <div class="card" style="width: 18rem; margin: 5px 5px">
-        <img
-          class="card-img-top"
-          src="<%= food.imgSrc %>"
-          alt="<%= food.description %>"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><%= food.description %></h5>
-          <p class="card-text"><b>R$</b> <%= food.price %></p>
-        </div>
+    <div class="card" style="width: 18rem; margin: 5px 5px">
+      <img
+        class="card-img-top"
+        src="<%= food.imgSrc %>"
+        alt="<%= food.description %>"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= food.description %></h5>
+        <p class="card-text"><b>R$</b> <%= food.price %></p>
       </div>
-      <% }) %>
+    </div>
+    <% }) %>
   </div>
+  <% if(drinks.length){ %>
+  <h2 class="menu-h2">Bebidas</h2>
+  <% } %>
   <div class="card-container d-flex flex-row flex-wrap" id="foods">
-    <h2>Bebidas</h2>
     <% drinks.forEach(drink => { %>
-      <div class="card" style="width: 18rem; margin: 5px 5px">
-        <img
-          class="card-img-top"
-          src="<%= drink.imgSrc %>"
-          alt="<%= drink.description %>"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><%= drink.description %></h5>
-          <p class="card-text"><b>R$</b><%= drink.price %></p>
-        </div>
+    <div class="card" style="width: 18rem; margin: 5px 5px">
+      <img
+        class="card-img-top"
+        src="<%= drink.imgSrc %>"
+        alt="<%= drink.description %>"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= drink.description %></h5>
+        <p class="card-text"><b>R$</b><%= drink.price %></p>
       </div>
-      <% }) %>
+    </div>
+    <% }) %>
   </div>
 </div>

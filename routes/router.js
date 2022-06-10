@@ -20,7 +20,7 @@ router.get("/", function (req, res, next) {
 // Rotas de Usuário
 router
   .get("/loginpage", userController.loginPage)
-  .get("/dashboard", userController.dashBoard)
+  .get("/dashboard", isAdmin, userController.dashBoard)
   .get("/users", isAdmin, userController.findAll)
   .post("/admin/create", isAdmin, userController.generateAdmin)
   .get("/user/createpage", isAdmin, userController.userCreatePage)
@@ -28,7 +28,7 @@ router
   .post("/login", userController.login)
   .get("/user/updatepage/:id", isAdmin, userController.updatePage)
   .post("/user/update/:id", isAdmin, userController.update)
-  .get("/user/delete/:id", userController.delete);
+  .get("/user/delete/:id", isAdmin, userController.delete);
 
 // Rotas do Menu
 router

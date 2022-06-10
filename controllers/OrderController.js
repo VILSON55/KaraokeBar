@@ -8,10 +8,11 @@ class OrderController {
     return res.status(200).render("pages/orders", {
       title: "Pedido Online KaraokeBar",
       content: {
-        title: "Pedido Online"
+        title: "Pedido Online",
       },
-      orders
-    })
+      layout: "userLayout",
+      orders,
+    });
   }
 
   async createPage(req, res) {
@@ -23,8 +24,8 @@ class OrderController {
         title: "Pedido Online",
       },
       items,
-      layout: "userLayout" 
-    })
+      layout: "userLayout",
+    });
   }
 
   async create(req, res) {
@@ -35,8 +36,8 @@ class OrderController {
     let infoItems = await prisma.item.findMany({
       where: {
         id: { in: items },
-    }
-    })
+      },
+    });
 
     let itemsFormatted = "";
 
@@ -53,11 +54,14 @@ class OrderController {
       data: {
         tableNumber,
         items: itemsFormatted,
-        totalPrice,
+        totalPrice: totalPrice.toLocaleString("pt-br", {
+          style: "currency",
+          currency: "BRL",
+        }),
       },
     });
 
-    return res.redirect('/orders')
+    return res.redirect("/orders");
   }
 
   async finish(req, res) {
@@ -83,8 +87,8 @@ class OrderController {
     const order = await prisma.order.findUnique({
       where: {
         id,
-      }
-    })
+      },
+    });
 
     return res.status(200).render("pages/orderUpdate", {
       title: "Atualizar Pedido",
@@ -93,8 +97,8 @@ class OrderController {
       },
       items,
       order,
-      layout: "userLayout" 
-    })
+      layout: "userLayout",
+    });
   }
 
   async update(req, res) {
@@ -106,8 +110,8 @@ class OrderController {
     let infoItems = await prisma.item.findMany({
       where: {
         id: { in: items },
-    }
-    })
+      },
+    });
 
     let itemsFormatted = "";
 
@@ -131,7 +135,7 @@ class OrderController {
       },
     });
 
-    return res.redirect("/orders")
+    return res.redirect("/orders");
   }
 
   async delete(req, res) {
@@ -143,7 +147,7 @@ class OrderController {
       },
     });
 
-    return res.redirect("/orders")
+    return res.redirect("/orders");
   }
 }
 

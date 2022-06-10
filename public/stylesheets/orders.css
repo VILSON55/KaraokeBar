@@ -1,0 +1,18 @@
+.items-ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.items-li {
+  position: relative;
+}
+
+.items-li::before {
+  position: absolute;
+  content: "";
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: lightslategrey;
+}

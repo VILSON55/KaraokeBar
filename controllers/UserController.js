@@ -59,7 +59,7 @@ class UserController {
         return res.redirect("/");
       }
 
-      return res.status(400).send("Usuário ou senha inválidos!");
+      return res.status(400).send("<h3>Usuário ou senha inválidos!</h3>");
     }
 
     return res

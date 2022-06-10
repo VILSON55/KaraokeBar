@@ -6,6 +6,7 @@
 @import url("input-styles.css");
 @import url("items.css");
 @import url("dashboard.css");
+@import url("orders.css");
 
 :root {
   --roxo: #59114d;

@@ -1,5 +1,12 @@
+.dashboard {
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
 .board {
-  background-color: burlywood;
+  min-width: 170px;
+  background-color: rgb(243, 226, 170);
   border-radius: 5%;
   border: solid 1px transparent;
   width: 20%;
@@ -8,4 +15,10 @@
 
 .user-actions {
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .board {
+    flex-grow: 1;
+  }
 }

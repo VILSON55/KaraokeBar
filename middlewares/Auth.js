@@ -6,7 +6,7 @@ function isAuthenticated(req, res, next) {
   return res
     .status(403)
     .send(
-      "<p>Para acessar essa página você precisa estar logado!<p><script>setTimeout(()=> {window.location.assign('/loginpage')}, 3000)</script>"
+      "<h3>Para acessar essa página você precisa estar logado!</h3><script>setTimeout(()=> {window.location.assign('/loginpage')}, 3000)</script>"
     );
 }
 
